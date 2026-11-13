@@ -1,8 +1,8 @@
 {
   "name": "digital-supply-template",
   "version": "1.0.0",
-  "description": "Plantilla web para tienda de suministro digital. Editable, con modo demo sin backend.",
-  "private": true,
+  "description": "Full-stack e-commerce template for digital supply stores. Astro + Firebase Auth + PWA + EN/ES i18n + demo mode.",
+  "private": false,
   "scripts": {
     "start": "npx serve . --listen 4322 --no-clipboard",
     "dev": "npx serve . --listen 4322",
@@ -11,6 +11,15 @@
   "engines": {
     "node": ">=18"
   },
-  "keywords": ["template", "digital-store", "ecommerce", "frontend"],
-  "license": "PENDIENTE — define tu licencia antes de publicar"
+  "keywords": [
+    "template",
+    "digital-store",
+    "ecommerce",
+    "frontend",
+    "astro",
+    "pwa",
+    "firebase-auth"
+  ],
+  "license": "MIT",
+  "author": "Pablo (https://myportfollio.bid)"
 }
