@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lighthouse:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install serve & Lighthouse CI
+        run: npm install -g serve @lhci/cli
+
+      - name: Serve site
+        run: serve . -l 4322 &
+        working-directory: ./
+
+      - name: Wait for server
+        run: npx wait-on http://localhost:4322 --timeout 15000
+
+      - name: Run Lighthouse CI
+        run: |
+          lhci autorun \
+            --collect.url=http://localhost:4322 \
+            --collect.numberOfRuns=1 \
+            --assert.preset=lighthouse:recommended \
+            --assert.assertions.uses-http2=off \
+            --assert.assertions.canonical=off \
+            --assert.assertions.is-crawlable=off \
+            --upload.target=temporary-public-storage
+        continue-on-error: true
+
+  validate-html:
+    name: Validate HTML
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate index.html
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        with:
+          target: index.html catalogo.html dudas.html novedades.html
+          css: false
+        continue-on-error: true

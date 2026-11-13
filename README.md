@@ -5,6 +5,9 @@
 **Una plantilla web completa para tiendas de suministro digital.**  
 Catálogo en vivo, checkout integrado, panel de cliente, auth, modo demo sin backend y PWA.
 
+[![Demo en vivo](https://img.shields.io/badge/Demo-pablooff--tech.github.io-0a0a0c?style=flat&logo=github&logoColor=white)](https://pablooff-tech.github.io/digital-supply-template/)
+[![CI](https://github.com/PablooFf-tech/digital-supply-template/actions/workflows/ci.yml/badge.svg)](https://github.com/PablooFf-tech/digital-supply-template/actions/workflows/ci.yml)
+
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -82,10 +85,19 @@ El objetivo: demostrar que una web de e-commerce profesional puede desplegarse e
 
 ---
 
+## Demo en vivo
+
+**[→ pablooff-tech.github.io/digital-supply-template](https://pablooff-tech.github.io/digital-supply-template/)**
+
+Prueba el modo demo sin instalar nada: catálogo, producto, carrito, checkout y panel de cliente completamente funcionales.
+
+---
+
 ## Inicio rápido
 
 ```bash
-cd plantilla-web
+git clone https://github.com/PablooFf-tech/digital-supply-template.git
+cd digital-supply-template
 npm start
 # → http://localhost:4322
 ```
