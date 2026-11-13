@@ -1,0 +1,25 @@
+{
+  "brandName": "TU MARCA AQUÍ",
+  "subtitle": "Especialistas en [Tu Categoría], [Tu Servicio] y [Tu Especialidad].",
+  "description": "Accede a nuestros productos o servicios con la máxima calidad y entrega inmediata.",
+  "primaryButton": {
+    "text": "Ver catálogo",
+    "link": "#catalog"
+  },
+  "secondaryButton": {
+    "text": "Novedades",
+    "link": "#updates"
+  },
+  "navigation": [
+    { "name": "HOME", "link": "#home" },
+    { "name": "CATALOG", "link": "#catalog" },
+    { "name": "FAQ", "link": "#faq" },
+    { "name": "UPDATES", "link": "#updates" }
+  ],
+  "footerLinks": [
+    { "name": "Catálogo", "link": "#catalog" },
+    { "name": "Dudas frecuentes", "link": "#faq" },
+    { "name": "Política de Privacidad", "link": "#privacy" },
+    { "name": "Términos y Condiciones", "link": "#terms" }
+  ]
+}

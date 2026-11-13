@@ -1,0 +1,16 @@
+{
+  "name": "digital-supply-template",
+  "version": "1.0.0",
+  "description": "Plantilla web para tienda de suministro digital. Editable, con modo demo sin backend.",
+  "private": true,
+  "scripts": {
+    "start": "npx serve . --listen 4322 --no-clipboard",
+    "dev": "npx serve . --listen 4322",
+    "preview": "npx serve . --listen 4322"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["template", "digital-store", "ecommerce", "frontend"],
+  "license": "PENDIENTE — define tu licencia antes de publicar"
+}

@@ -1,0 +1,132 @@
+{
+  "test-producto-1": {
+    "id": "test-producto-1",
+    "slug": "test-producto-1",
+    "name": "TEST 1 — Nombre del Producto",
+    "category": "ia",
+    "kicker": "[CATEGORÍA 1]",
+    "categoryLabel": "[CATEGORÍA 1]",
+    "description": "Descripción del producto 1. Edita este texto para personalizar tu tienda.",
+    "sell_price": 9.99,
+    "fulfillment_available": true,
+    "stock": 99,
+    "cover": null,
+    "cardIncludes": [
+      "[Característica 1]",
+      "[Característica 2]",
+      "[Característica 3]"
+    ],
+    "variants": [
+      {
+        "id": "test-producto-1-v1",
+        "name": "[Variante 1]",
+        "sell_price": 9.99,
+        "stock": 99
+      }
+    ]
+  },
+  "test-producto-2": {
+    "id": "test-producto-2",
+    "slug": "test-producto-2",
+    "name": "TEST 2 — Nombre del Producto",
+    "category": "streaming",
+    "kicker": "[CATEGORÍA 2]",
+    "categoryLabel": "[CATEGORÍA 2]",
+    "description": "Descripción del producto 2. Edita este texto para personalizar tu tienda.",
+    "sell_price": 14.99,
+    "fulfillment_available": true,
+    "stock": 99,
+    "cover": null,
+    "cardIncludes": [
+      "[Característica 1]",
+      "[Característica 2]",
+      "[Característica 3]"
+    ],
+    "variants": [
+      {
+        "id": "test-producto-2-v1",
+        "name": "[Variante 1]",
+        "sell_price": 14.99,
+        "stock": 99
+      }
+    ]
+  },
+  "test-producto-3": {
+    "id": "test-producto-3",
+    "slug": "test-producto-3",
+    "name": "TEST 3 — Nombre del Producto",
+    "category": "gaming",
+    "kicker": "[CATEGORÍA 3]",
+    "categoryLabel": "[CATEGORÍA 3]",
+    "description": "Descripción del producto 3. Edita este texto para personalizar tu tienda.",
+    "sell_price": 19.99,
+    "fulfillment_available": true,
+    "stock": 99,
+    "cover": null,
+    "cardIncludes": [
+      "[Característica 1]",
+      "[Característica 2]",
+      "[Característica 3]"
+    ],
+    "variants": [
+      {
+        "id": "test-producto-3-v1",
+        "name": "[Variante 1]",
+        "sell_price": 19.99,
+        "stock": 99
+      }
+    ]
+  },
+  "test-producto-4": {
+    "id": "test-producto-4",
+    "slug": "test-producto-4",
+    "name": "TEST 4 — Nombre del Producto",
+    "category": "vpn",
+    "kicker": "[CATEGORÍA 4]",
+    "categoryLabel": "[CATEGORÍA 4]",
+    "description": "Descripción del producto 4. Edita este texto para personalizar tu tienda.",
+    "sell_price": 24.99,
+    "fulfillment_available": true,
+    "stock": 99,
+    "cover": null,
+    "cardIncludes": [
+      "[Característica 1]",
+      "[Característica 2]",
+      "[Característica 3]"
+    ],
+    "variants": [
+      {
+        "id": "test-producto-4-v1",
+        "name": "[Variante 1]",
+        "sell_price": 24.99,
+        "stock": 99
+      }
+    ]
+  },
+  "test-producto-5": {
+    "id": "test-producto-5",
+    "slug": "test-producto-5",
+    "name": "TEST 5 — Nombre del Producto",
+    "category": "software",
+    "kicker": "[CATEGORÍA 5]",
+    "categoryLabel": "[CATEGORÍA 5]",
+    "description": "Descripción del producto 5. Edita este texto para personalizar tu tienda.",
+    "sell_price": 29.99,
+    "fulfillment_available": true,
+    "stock": 99,
+    "cover": null,
+    "cardIncludes": [
+      "[Característica 1]",
+      "[Característica 2]",
+      "[Característica 3]"
+    ],
+    "variants": [
+      {
+        "id": "test-producto-5-v1",
+        "name": "[Variante 1]",
+        "sell_price": 29.99,
+        "stock": 99
+      }
+    ]
+  }
+}

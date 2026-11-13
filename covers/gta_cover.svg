@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#120c22"/>
+      <stop offset="50%" stop-color="#0a0714"/>
+      <stop offset="100%" stop-color="#05030a"/>
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a9d8f" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#3b2667" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#2a9d8f" stop-opacity="0.4"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#2a9d8f" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#2a9d8f" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.7"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="600" height="360" fill="#06040b"/>
+  <circle cx="300" cy="180" r="220" fill="url(#glow)"/>
+
+  <!-- 3D Card Envelope Outline -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="30" width="500" height="300" rx="20" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="2"/>
+  </g>
+
+  <!-- Envelope Fold 3D Geometry -->
+  <path d="M 50 30 L 300 190 L 550 30" fill="none" stroke="#2a9d8f" stroke-opacity="0.15" stroke-width="1.5"/>
+  <path d="M 50 330 L 250 170" fill="none" stroke="#2a9d8f" stroke-opacity="0.12" stroke-width="1.5"/>
+  <path d="M 550 330 L 350 170" fill="none" stroke="#2a9d8f" stroke-opacity="0.12" stroke-width="1.5"/>
+
+  <!-- Top Metadata Bar -->
+  <g transform="translate(75, 62)">
+    <circle cx="8" cy="8" r="5" fill="#2a9d8f"/>
+    <text x="22" y="12" fill="#c4b5fd" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5">KRYSTAL OFFICIAL SUPPLY</text>
+  </g>
+  <g transform="translate(420, 62)">
+    <rect x="0" y="-3" width="105" height="20" rx="10" fill="rgba(16, 185, 129, 0.12)" stroke="rgba(16, 185, 129, 0.3)" stroke-width="1"/>
+    <text x="52" y="11" text-anchor="middle" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" letter-spacing="1">● EN STOCK</text>
+  </g>
+
+  <!-- Central Icon & Branding -->
+  <g transform="translate(300, 160)">
+    <g transform="translate(-32, -55) scale(2.6)" fill="#ffffff"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></g>
+    <text x="0" y="42" text-anchor="middle" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" letter-spacing="1.2">GRAND THEFT AUTO V</text>
+    <text x="0" y="64" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" letter-spacing="0.5">STEAM / FIVE M READY</text>
+  </g>
+
+  <!-- Bottom Quality Seal -->
+  <g transform="translate(75, 302)">
+    <text x="0" y="0" fill="#64748b" font-family="ui-monospace, monospace" font-size="10" font-weight="600" letter-spacing="1.5">LICENCIA DIGITAL · AUTODELIVERY</text>
+  </g>
+  <g transform="translate(435, 302)">
+    <text x="0" y="0" fill="#a78bfa" font-family="ui-monospace, monospace" font-size="10" font-weight="700" letter-spacing="1">GARANTÍA 100%</text>
+  </g>
+</svg>

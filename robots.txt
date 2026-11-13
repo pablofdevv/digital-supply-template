@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Allow: /catalogo
+Allow: /product/
+Allow: /dudas
+Allow: /novedades
+Allow: /replace
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/
+Disallow: /customer_orders.json
+Disallow: /invoice/
+Disallow: /checkout
+Disallow: /my-account
+
+Sitemap: https://tudominio.com/sitemap.xml

@@ -1,0 +1,1 @@
+import"./i18n.pHU_4c0N.js";

@@ -1,0 +1,1 @@
+import{s as e}from"./catalog.CGex1v_0.js";e();

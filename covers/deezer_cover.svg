@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#120c22"/>
+      <stop offset="50%" stop-color="#0a0714"/>
+      <stop offset="100%" stop-color="#05030a"/>
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a238ff" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#3b2667" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#a238ff" stop-opacity="0.4"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#a238ff" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#a238ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.7"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="600" height="360" fill="#06040b"/>
+  <circle cx="300" cy="180" r="220" fill="url(#glow)"/>
+
+  <!-- 3D Card Envelope Outline -->
+  <g filter="url(#shadow)">
+    <rect x="50" y="30" width="500" height="300" rx="20" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="2"/>
+  </g>
+
+  <!-- Envelope Fold 3D Geometry -->
+  <path d="M 50 30 L 300 190 L 550 30" fill="none" stroke="#a238ff" stroke-opacity="0.15" stroke-width="1.5"/>
+  <path d="M 50 330 L 250 170" fill="none" stroke="#a238ff" stroke-opacity="0.12" stroke-width="1.5"/>
+  <path d="M 550 330 L 350 170" fill="none" stroke="#a238ff" stroke-opacity="0.12" stroke-width="1.5"/>
+
+  <!-- Top Metadata Bar -->
+  <g transform="translate(75, 62)">
+    <circle cx="8" cy="8" r="5" fill="#a238ff"/>
+    <text x="22" y="12" fill="#c4b5fd" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5">KRYSTAL OFFICIAL SUPPLY</text>
+  </g>
+  <g transform="translate(420, 62)">
+    <rect x="0" y="-3" width="105" height="20" rx="10" fill="rgba(16, 185, 129, 0.12)" stroke="rgba(16, 185, 129, 0.3)" stroke-width="1"/>
+    <text x="52" y="11" text-anchor="middle" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" letter-spacing="1">● EN STOCK</text>
+  </g>
+
+  <!-- Central Icon & Branding -->
+  <g transform="translate(300, 160)">
+    <g transform="translate(-32, -55) scale(2.6)" fill="#ffffff"><path d="M6 18h2v4H6zm4-3h2v7h-2zm4-4h2v11h-2zm4-4h2v15h-2zm4-4h2v19h-2z"/></g>
+    <text x="0" y="42" text-anchor="middle" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" letter-spacing="1.2">DEEZER HiFi</text>
+    <text x="0" y="64" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" letter-spacing="0.5">MÚSICA LOSSLESS SIN LÍMITES</text>
+  </g>
+
+  <!-- Bottom Quality Seal -->
+  <g transform="translate(75, 302)">
+    <text x="0" y="0" fill="#64748b" font-family="ui-monospace, monospace" font-size="10" font-weight="600" letter-spacing="1.5">LICENCIA DIGITAL · AUTODELIVERY</text>
+  </g>
+  <g transform="translate(435, 302)">
+    <text x="0" y="0" fill="#a78bfa" font-family="ui-monospace, monospace" font-size="10" font-weight="700" letter-spacing="1">GARANTÍA 100%</text>
+  </g>
+</svg>

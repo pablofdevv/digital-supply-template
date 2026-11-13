@@ -1,0 +1,99 @@
+import{n as e}from"./api.DXnUQ9ak.js";var t=(function(){let e=typeof document<`u`&&document.createElement(`link`).relList;return e&&e.supports&&e.supports(`modulepreload`)?`modulepreload`:`preload`})(),n=function(e){return`/`+e},r={},i=function(e){return e.pathname.endsWith(`.css`)},a=function(e,t,n){if(t in e)return e[t];let r=n();if(!r){e[t]=void 0;return}let i=r.then(()=>{e[t]=void 0},n=>{throw e[t]=void 0,n});return e[t]=i,i},o=function(e,o,s){let c=Promise.resolve();if(o&&o.length>0){let e,l=document.querySelector(`meta[property=csp-nonce]`),u=l?.nonce||l?.getAttribute(`nonce`);function d(e){return Promise.all(e.map(e=>Promise.resolve(e).then(e=>({status:`fulfilled`,value:e}),e=>({status:`rejected`,reason:e}))))}function f(e){return import.meta.resolve?new URL(import.meta.resolve(e)):new URL(e,import.meta.url)}c=d(o.map(o=>{o=n(o,s);let c=f(o),l=i(c);return a(r,c.href,()=>{if(e===void 0){e={all:new Set,styles:new Set};let t=document.getElementsByTagName(`link`);for(let n=t.length-1;n>=0;n--){let r=t[n];e.all.add(r.href),r.rel===`stylesheet`&&e.styles.add(r.href)}}if((l?e.styles:e.all).has(c.href))return;let n=document.createElement(`link`);if(n.rel=l?`stylesheet`:t,l||(n.as=`script`),n.crossOrigin=``,n.href=c.href,u&&n.setAttribute(`nonce`,u),document.head.appendChild(n),l)return new Promise((e,t)=>{let r=i=>{n.removeEventListener(`load`,r),n.removeEventListener(`error`,r),i.type===`error`?t(Error(`Unable to preload CSS for ${c}`)):e(i)};n.addEventListener(`load`,r),n.addEventListener(`error`,r)})})}).filter(e=>e!==void 0))}function l(e){let t=new Event(`vite:preloadError`,{cancelable:!0});if(t.payload=e,window.dispatchEvent(t),!t.defaultPrevented)throw e}return c.then(t=>{for(let e of t||[])e.status===`rejected`&&l(e.reason);return e().catch(l)})},s=e=>document.querySelector(e),c=s(`#invoice-modal`),l={customer:null,orders:[],replacements:[],currentFilter:`all`,currentReplFilter:`all`,searchQuery:``,activeTab:`resumen`,currentViewingOrder:null};function u(){typeof window.openAuthModal==`function`?window.openAuthModal():window.location.href=`/login?next=`+encodeURIComponent(location.pathname)}function d(){window.location.href=`/catalogo`}function f(e,t){e&&navigator.clipboard.writeText(e).then(()=>{if(!t)return;let e=t.innerHTML;t.innerHTML=`
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#34d399" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg>
+      <span style="font-size: 0.72rem; color: #34d399; font-weight: 700; margin-left: 4px;">¡Copiado!</span>
+    `,setTimeout(()=>{t.innerHTML=e},2e3)}).catch(e=>{console.error(`Could not copy:`,e)})}async function p(){try{let e=await fetch(`/api/customer/dashboard`);if(!e.ok)return e.status===401&&u(),null;let t=await e.json();l.customer=t;let n=s(`#dash-user-avatar`);n&&(n.textContent=t.initial||(t.email?t.email[0].toUpperCase():`K`));let r=s(`#dash-user-name`);r&&(r.textContent=t.username||(t.email?t.email.split(`@`)[0]:`Cliente`));let i=s(`#dash-user-email`);i&&(i.textContent=t.email||``);let a=s(`#dash-header-email`);a&&(a.textContent=t.email||``);let o=s(`#dash-ajustes-email`);o&&(o.textContent=t.email||``);let c=s(`#dash-admin-btn`);c&&(c.style.display=t.isAdmin?`inline-flex`:`none`);let d=`€${t.balance||`0.00`}`,f=s(`#dash-resumen-balance`);f&&(f.textContent=d);let p=s(`#dash-saldo-current`);p&&(p.textContent=d);let m=s(`#dash-rewards-balance`);m&&(m.textContent=d);let h=s(`#dash-resumen-completed`);h&&(h.textContent=t.stats?.completedOrders??0);let g=s(`#dash-resumen-spent`);g&&(g.textContent=`€${t.stats?.totalSpent??`0.00`}`);let _=s(`#dash-resumen-since`);_&&(_.textContent=t.stats?.clientSince??`Reciente`);let v=s(`#dash-last-order-container`);if(v){if(t.lastOrder&&t.lastOrder.id!==`none`){let e=t.lastOrder;v.innerHTML=`
+          <div class="dash-order-row-preview" data-invoice-id="${e.id}">
+            <span class="dash-order-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"></path><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><path d="M12 17.5v-11"></path></svg>
+            </span>
+            <div class="dash-order-info-col">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <p class="dash-order-code">${e.orderNum}</p>
+                <span class="dash-status-pill status-completado">${e.status||`COMPLETADO`}</span>
+              </div>
+              <p class="dash-order-date">${e.date} · ${e.productName||e.items}</p>
+            </div>
+            <div class="dash-order-price-col" style="display: flex; flex-direction: column; align-items: flex-end; gap: 6px;">
+              <p class="dash-order-price">${e.price}</p>
+              <a href="/invoice/${e.id}" class="dash-pill-action-btn" style="padding: 5px 12px; font-size: 0.72rem; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                <span>Ver Factura & Credenciales</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+              </a>
+            </div>
+          </div>
+        `}else v.innerHTML=`
+          <div class="dash-order-row-preview" style="cursor: default;">
+            <span class="dash-order-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>
+            </span>
+            <div class="dash-order-info-col">
+              <p class="dash-order-code" style="color: var(--muted);">Sin pedidos recientes</p>
+              <p class="dash-order-date">Tus compras en Krystal Supply se mostrarán aquí con sus credenciales y garantía.</p>
+            </div>
+          </div>
+        `}let y=s(`#dash-tier-progress-bar`);y&&(y.style.width=`${t.tier?.progressPercent||0}%`);let b=s(`#dash-tier-progress-text`);b&&(b.textContent=`Progreso: €${t.stats?.totalSpent||`0.00`} / €50.00 acumulados`);let x=s(`#stat-total-orders`);x&&(x.textContent=t.stats?.completedOrders||0);let S=s(`#stat-completed-orders`);S&&(S.textContent=t.stats?.completedOrders||0);let C=s(`#stat-total-spent`);C&&(C.textContent=`€${t.stats?.totalSpent||`0.00`}`);let w=s(`#stat-total-savings`);if(w&&(w.textContent=`~€${(parseFloat(t.stats?.totalSpent||0)*3.5).toFixed(2)}`),t.cryptoAddresses){let e=s(`#dash-btc-address`);e&&t.cryptoAddresses.btc&&(e.textContent=t.cryptoAddresses.btc);let n=s(`#dash-ltc-address`);n&&t.cryptoAddresses.ltc&&(n.textContent=t.cryptoAddresses.ltc)}if(t.reseller){let e=s(`#dash-api-key`);e&&t.reseller.apiKey&&(e.textContent=t.reseller.apiKey);let n=s(`#dash-webhook-url`);n&&t.reseller.webhookUrl&&(n.textContent=t.reseller.webhookUrl)}return t}catch(e){return console.error(`Error fetching dashboard data:`,e),null}}async function m(){try{let e=await fetch(`/api/customer/orders`);if(!e.ok)return;let t=await e.json();l.orders=t.orders||[];let n=s(`#dash-orders-pill-badge`);n&&(n.textContent=t.total||l.orders.length);let r=s(`#dash-pedidos-count-sub`);r&&(r.textContent=`${t.total||l.orders.length} pedidos`),h()}catch(e){console.error(`Error fetching orders:`,e)}}function h(){let e=s(`#dash-orders-container`);if(!e)return;let t=l.orders||[];if(l.currentFilter&&l.currentFilter!==`all`){let e=l.currentFilter.toUpperCase();t=t.filter(t=>t.status===e||e===`INCIDENCIA`&&t.status.includes(`INCIDENCIA`))}if(l.searchQuery){let e=l.searchQuery.toLowerCase();t=t.filter(t=>t.id.toLowerCase().includes(e)||t.orderNum.toLowerCase().includes(e)||t.items.toLowerCase().includes(e)||t.productName&&t.productName.toLowerCase().includes(e))}if(t.length)e.innerHTML=t.map(e=>{let t=`status-completado`;return e.status===`PENDIENTE`?t=`status-pendiente`:e.status.includes(`INCIDENCIA`)&&(t=`status-incidencia`),`
+      <div class="dash-order-card" data-invoice-id="${e.id}">
+        <span class="dash-order-icon">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"></path><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><path d="M12 17.5v-11"></path></svg>
+        </span>
+        <div class="dash-order-details-col">
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <p class="dash-order-code">${e.orderNum}</p>
+            <span class="dash-status-pill ${t}">${e.status}</span>
+          </div>
+          <p class="dash-order-items-line" style="font-weight: 600; color: #fff; margin-top: 4px;">${e.productName||e.items}</p>
+          <p style="font-size: 0.78rem; color: var(--muted); margin: 2px 0 0;">${e.date} · ${e.relative||`reciente`} · Krystal Digital Supply</p>
+        </div>
+        <div class="dash-order-price-col" style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+          <p class="dash-order-price">${e.price}</p>
+          <a href="/invoice/${e.id}" class="dash-pill-action-btn" style="padding: 6px 14px; font-size: 0.75rem; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 4px;">
+            <span>Ver Factura & Credenciales</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+      </div>
+    `}).join(``);else{let t=l.currentFilter&&l.currentFilter!==`all`||l.searchQuery;e.innerHTML=`
+      <div class="dash-card" style="text-align: center; padding: 3rem 1.5rem;">
+        <div style="font-size: 2.2rem; margin-bottom: 10px;">📦</div>
+        <h3 style="color: #fff; font-size: 1.05rem; margin-bottom: 6px;">${t?`No se encontraron pedidos coincidentes`:`Aún no tienes pedidos en tu cuenta`}</h3>
+        <p style="color: var(--muted); font-size: 0.85rem; max-width: 440px; margin: 0 auto 16px;">${t?`Prueba ajustando el filtro de búsqueda o el estado del pedido.`:`Tus compras de cuentas premium, licencias y suscripciones en Krystal Supply aparecerán aquí automáticamente con entrega instantánea.`}</p>
+        <button type="button" class="dash-primary-btn" onclick="location.href='/catalogo'" style="margin: 0 auto;">Explorar catálogo ➔</button>
+      </div>
+    `}}async function g(){try{let e=await fetch(`/api/customer/replacements`);if(!e.ok)return;let t=await e.json();l.replacements=t.replacements||[];let n=s(`#repl-stat-total`);n&&(n.textContent=t.total||l.replacements.length);let r=s(`#repl-stat-active`);r&&(r.textContent=l.replacements.filter(e=>e.status===`EN REVISIÓN`||e.status===`PROCESANDO`).length);let i=s(`#repl-stat-resolved`);i&&(i.textContent=l.replacements.filter(e=>e.status===`REEMPLAZADO`).length),_()}catch(e){console.error(`Error fetching replacements:`,e)}}function _(){let e=s(`#dash-replacements-container`);if(!e)return;let t=l.replacements||[];if(l.currentReplFilter&&l.currentReplFilter!==`all`){let e=l.currentReplFilter.toUpperCase();t=t.filter(t=>t.status.toUpperCase()===e)}e.innerHTML=t.length?t.map(e=>{let t=`status-pendiente`;return e.status===`REEMPLAZADO`?t=`status-completado`:e.status===`RECHAZADO`&&(t=`status-incidencia`),`
+      <div class="dash-order-card" style="align-items: flex-start; cursor: default; margin-bottom: 10px;">
+        <span class="dash-order-icon" style="background: rgba(139, 92, 246, 0.15); color: #c084fc;">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </span>
+        <div class="dash-order-details-col" style="flex: 1;">
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <p class="dash-order-code" style="color: #c084fc;">${e.replacementNum}</p>
+            <span class="dash-status-pill ${t}">${e.status}</span>
+            <span style="font-size: 0.76rem; color: var(--muted);">Pedido: <strong style="color: #e2e8f0;">${e.orderNum}</strong></span>
+          </div>
+          <p class="dash-order-items-line" style="margin-top: 4px; font-weight: 600; color: #fff;">${e.productName}</p>
+          <p style="font-size: 0.8rem; color: #94a3b8; margin: 4px 0 0;">Motivo: ${e.reason}</p>
+          ${e.details?`<p style="font-size: 0.76rem; color: var(--muted); margin: 2px 0 0; font-style: italic;">"${e.details}"</p>`:``}
+          ${e.newCredentials?`
+            <div style="margin-top: 8px; padding: 8px 12px; background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.25); border-radius: 6px;">
+              <span style="font-size: 0.72rem; color: #34d399; font-weight: 700; text-transform: uppercase;">Nueva Solución / Acceso:</span>
+              <p style="font-size: 0.8rem; color: #e2e8f0; margin: 4px 0 0; font-family: monospace;">${e.newCredentials}</p>
+            </div>
+          `:``}
+        </div>
+        <div class="dash-order-price-col" style="text-align: right; min-width: 100px;">
+          <p style="font-size: 0.75rem; color: var(--muted); margin: 0;">${e.date}</p>
+          <span style="font-size: 0.7rem; color: #a78bfa; margin-top: 4px; display: inline-block;">Garantía Krystal</span>
+        </div>
+      </div>
+    `}).join(``):`
+      <div class="dash-card" style="text-align: center; padding: 3rem 1.5rem;">
+        <div style="font-size: 2.2rem; margin-bottom: 10px;">🛡️</div>
+        <h3 style="color: #fff; font-size: 1.05rem; margin-bottom: 6px;">Cero incidencias en tu cuenta</h3>
+        <p style="color: var(--muted); font-size: 0.85rem; max-width: 440px; margin: 0 auto 16px;">No tienes solicitudes de reemplazo activas. Cuando adquieras un producto en Krystal Supply dispondrás de cobertura de reposición directa ante cualquier fallo técnico.</p>
+        <button type="button" class="dash-pill-action-btn" data-dash-nav="pedidos" style="margin: 0 auto;">Ver mis pedidos</button>
+      </div>
+    `}var v={dashboard:`resumen`,resumen:`resumen`,orders:`pedidos`,invoices:`pedidos`,pedidos:`pedidos`,replacements:`reemplazos`,tickets:`reemplazos`,reemplazos:`reemplazos`,balance:`saldo`,saldo:`saldo`,rewards:`recompensas`,recompensas:`recompensas`,stats:`estadisticas`,estadisticas:`estadisticas`,settings:`ajustes`,ajustes:`ajustes`};function y(e=location.pathname){return v[e.replace(/\/+$/,``).split(`/`)[2]]||`resumen`}var b=null;function x(){return b||=o(()=>import(`./roulette.AwES-vCy.js`).then(e=>(e.bindRoulette(),e)),[]),b}function S(e,t=!0){e||=`resumen`,l.activeTab=e,document.querySelectorAll(`.dash-nav-link, .dash-reseller-btn`).forEach(t=>{t.getAttribute(`data-dash-nav`)===e?t.classList.add(`active`):t.classList.remove(`active`)}),document.querySelectorAll(`.dash-tab-pane`).forEach(e=>{e.classList.remove(`active`)});let n=s(`#dash-pane-${e}`);n&&n.classList.add(`active`);let r={resumen:`DASHBOARD`,pedidos:`PEDIDOS & FACTURAS`,reemplazos:`REEMPLAZOS & GARANTÍAS`,saldo:`SALDO`,estadisticas:`ESTADÍSTICAS`,recompensas:`RULETA DE RECOMPENSAS`,ajustes:`AJUSTES`},i=s(`#dash-active-tab-title`);i&&(i.textContent=r[e]||e.toUpperCase());let a=s(`.dash-sidebar`);a&&a.classList.remove(`mobile-open`),e===`recompensas`&&x().then(e=>e.initRoulette());let o={resumen:`/customer/dashboard`,pedidos:`/customer/orders`,reemplazos:`/customer/replacements`,saldo:`/customer/balance`,estadisticas:`/customer/stats`,recompensas:`/customer/rewards`,ajustes:`/customer/settings`}[e]||`/customer/dashboard`;t&&window.location.pathname!==o&&history.pushState(null,``,o)}function C(e=`resumen`,t=!1){S(e,t),p(),m(),g()}function w(e=null){let t=s(`#request-replacement-modal`);if(!t)return;let n=s(`#repl-select-order`);if(n){let t=l.orders||[];n.innerHTML=t.length?t.map(t=>`
+        <option value="${t.id}" ${e&&(t.id===e||t.orderNum.replace(`#`,``)===e)?`selected`:``}>
+          ${t.orderNum} — ${t.productName||t.items} (${t.status})
+        </option>
+      `).join(``):`<option value="">No hay pedidos disponibles</option>`}let r=s(`#repl-status-msg`);r&&(r.textContent=``);let i=s(`#repl-details-text`);i&&(i.value=``),t.showModal()}document.addEventListener(`click`,e=>{let t=e.target.closest(`[data-dash-nav]`);if(t){e.preventDefault();let n=t.getAttribute(`data-dash-nav`);S(n,!0),n===`reemplazos`&&g();return}let n=e.target.closest(`[data-open-order], [data-invoice-id]`);if(n){e.preventDefault();let t=n.getAttribute(`data-invoice-id`)||n.getAttribute(`data-open-order`);if(t){window.location.href=`/invoice/${t}`;return}}let r=e.target.closest(`[data-copy-target]`);if(r){e.preventDefault();let t=r.getAttribute(`data-copy-target`),n=document.getElementById(t);n&&f(n.textContent.trim(),r);return}if(e.target.closest(`#inv-copy-cred-btn`)){e.preventDefault();let t=s(`#inv-credentials-code`);t&&f(t.textContent.trim(),s(`#inv-copy-cred-btn`));return}let i=e.target.closest(`.dash-filter-chip`);if(i){document.querySelectorAll(`.dash-filter-chip`).forEach(e=>e.classList.remove(`active`)),i.classList.add(`active`),l.currentFilter=i.getAttribute(`data-filter`),h();return}let a=e.target.closest(`[data-repl-filter]`);if(a)document.querySelectorAll(`[data-repl-filter]`).forEach(e=>e.classList.remove(`active`)),a.classList.add(`active`),l.currentReplFilter=a.getAttribute(`data-repl-filter`),_();else if(e.target.closest(`#inv-replace-btn`)){e.preventDefault();let t=l.currentViewingOrder;w(t?.id)}});var T=s(`#dash-back-btn`);T&&(T.onclick=d);var E=s(`#dash-go-store-btn`);E&&(E.onclick=e=>{e.preventDefault(),d()});var D=s(`#dash-mobile-menu-btn`);D&&(D.onclick=()=>{let e=s(`.dash-sidebar`);e&&e.classList.toggle(`mobile-open`)});var O=s(`#dash-orders-search`);O&&(O.oninput=e=>{l.searchQuery=e.target.value.trim(),h()}),document.querySelectorAll(`[data-close-invoice]`).forEach(e=>e.onclick=()=>c.close()),document.querySelectorAll(`[data-close-replacement]`).forEach(e=>e.onclick=()=>s(`#request-replacement-modal`)?.close());var k=s(`#dash-open-repl-modal`);k&&(k.onclick=()=>w());var A=s(`#form-submit-replacement`);A&&(A.onsubmit=async e=>{e.preventDefault();let t=s(`#repl-select-order`)?.value,n=s(`#repl-select-reason`)?.value,r=s(`#repl-details-text`)?.value,i=s(`#repl-status-msg`),a=s(`#repl-submit-btn`);if(!t||!n)i&&(i.style.color=`#f43f5e`,i.textContent=`Por favor selecciona un pedido e indica el motivo.`);else{a&&(a.disabled=!0,a.textContent=`Procesando solicitud…`);try{let e=await fetch(`/api/customer/replacements`,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify({orderId:t,reason:n,details:r})}),a=await e.json();e.ok?(i&&(i.style.color=`#34d399`,i.textContent=`✓ `+(a.message||`Reemplazo solicitado con éxito.`)),await Promise.all([m(),g(),p()]),setTimeout(()=>{s(`#request-replacement-modal`)?.close(),c?.open&&c.close(),S(`reemplazos`)},1200)):i&&(i.style.color=`#f43f5e`,i.textContent=a.error||`No se pudo tramitar la solicitud.`)}catch{i&&(i.style.color=`#f43f5e`,i.textContent=`Error de conexión con el servidor.`)}finally{a&&(a.disabled=!1,a.textContent=`Confirmar solicitud de reemplazo ➔`)}}});var j=s(`#dash-sidebar-logout`);j&&(j.onclick=async()=>{await fetch(`/api/auth/logout`,{method:`POST`}),await e().catch(()=>{}),d()});var M=s(`#dash-change-email-form`);M&&(M.onsubmit=e=>{e.preventDefault();let t=s(`#dash-new-email`).value,n=s(`#dash-email-msg`);n&&(n.style.color=`#34d399`,n.textContent=`Hemos enviado un código de confirmación a ${t}.`)}),window.addEventListener(`popstate`,()=>S(y(),!1)),C(y(),!1);

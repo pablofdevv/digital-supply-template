@@ -1,0 +1,1 @@
+var e=new EventTarget,t=(t,n)=>e.dispatchEvent(new CustomEvent(t,{detail:n}));function n(e,t,n=!0){return(n||typeof window[e]!=`function`)&&(window[e]=t),t}n(`openAuthModal`,()=>{location.href=`/login`},!1),n(`checkoutStatus`,(e,t=!1)=>{t&&console.warn(e)},!1),typeof window.customerCheckoutPending!=`boolean`&&(window.customerCheckoutPending=!1);export{t as n,n as t};
